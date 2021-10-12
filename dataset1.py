@@ -55,9 +55,24 @@ def make_dataset(dataset: pd.DataFrame, average=0.0, std=2.0) -> pd.DataFrame:
     dataset["観測値"] = noisy_data
     return dataset
 
+# 演習1.4
+def save_df_to_tsv(filename: str, dataset: pd.DataFrame) -> None:
+    dataset.to_csv(filename, sep="\t")
+
+# 演習1.5
+def read_df_from_tsv(filename: str) -> pd.DataFrame:
+    df = pd.read_csv(filename, sep="\t")
+    return df
+
 if __name__ == "__main__":
     x_min = -1
     x_max = 1
     dataset = make_true_dataset(x_min, x_max) # 真値生成
     dataset = make_dataset(dataset) # ノイズ付与した観測値生成
     plot_truedata(x_min, x_max, dataset)
+
+    tsv_filename = "df.tsv"
+    save_df_to_tsv(tsv_filename, dataset)
+
+    temp = read_df_from_tsv(tsv_filename)
+    print(temp)
