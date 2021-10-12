@@ -20,7 +20,10 @@ def plot_rawdata(x_min, x_max):
     plt.ylabel("y")
     plt.grid(True)
     plt.legend(loc="best")
+    plt.show()
     plt.savefig("ex1.1.png")
+
+
 
 if __name__ == "__main__":
     x_min = -1
